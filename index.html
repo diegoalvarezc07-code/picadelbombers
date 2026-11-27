@@ -1,0 +1,1646 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Picá del Bomber's | Pizarra Artesanal, Sushi y Churros en Temuco</title>
+  <!-- Open Graph Meta Tags para vista previa enriquecida en WhatsApp y redes sociales -->
+  <meta property="og:title" content="La Picá del Bomber's | Comida Casera, Bomber's Sushi y Churros en Temuco" />
+  <meta property="og:description" content="Buena Comida, Buenas Historias • El verdadero sabor nos une. Menú del día, sándwiches, Bomber's Sushi y Churros y Algo Más en Av. Barros Arana 196, Temuco. ¡Delivery y retiro al +56 45 2627956!" />
+  <meta property="og:type" content="website" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Fredoka, Patrick Hand & Nunito -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Nunito:wght@400;600;700;800&family=Patrick+Hand&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            pizarraVerde: '#14211D',
+            pizarraTablero: '#1B2D27',
+            pizarraOscura: '#0E1714',
+            maderaMarco: '#7C4A27',
+            maderaBrillo: '#9A5B2F',
+            tizaCrema: '#FAF6EE',
+            tizaAmarilla: '#FACC15',
+            bomberoRojo: '#E11D48',
+            bomberoOscuro: '#BE123C',
+          },
+          fontFamily: {
+            display: ['"Fredoka"', 'sans-serif'],
+            chalk: ['"Patrick Hand"', 'cursive'],
+            sans: ['"Nunito"', 'sans-serif'],
+          },
+          boxShadow: {
+            pizarra: '0 14px 34px -8px rgba(0, 0, 0, 0.55)',
+            madera: 'inset 0 0 0 3px #9A5B2F, 0 12px 28px rgba(0, 0, 0, 0.45)',
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    /* Textura sutil de pizarra artesanal */
+    .chalkboard-surface {
+      background-color: #14211D;
+      background-image:
+        radial-gradient(rgba(250, 246, 238, 0.04) 1px, transparent 0),
+        radial-gradient(rgba(250, 204, 21, 0.025) 1px, transparent 0);
+      background-size: 28px 28px;
+      background-position: 0 0, 14px 14px;
+    }
+
+    /* Borde de marco de madera tradicional */
+    .wood-frame {
+      border: 4px solid #7C4A27;
+      box-shadow: inset 0 0 0 2px #9A5B2F, 0 12px 30px rgba(0, 0, 0, 0.45);
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="chalkboard-surface text-tizaCrema font-sans antialiased selection:bg-bomberoRojo selection:text-white pb-24 overflow-x-hidden">
+
+  <!-- Notificación Toast Flotante -->
+  <div id="toast-notification" class="fixed top-20 sm:top-24 right-4 sm:right-5 z-50 transform -translate-y-8 opacity-0 transition-all duration-300 pointer-events-none max-w-[90vw]">
+    <div class="bg-pizarraTablero border-2 border-maderaBrillo text-tizaCrema px-4 py-3 sm:px-5 sm:py-3.5 rounded-2xl shadow-2xl flex items-center gap-3">
+      <div class="w-8 h-8 rounded-xl bg-tizaAmarilla text-pizarraOscura flex items-center justify-center shrink-0 font-bold">
+        <i class="fa-solid fa-check text-sm"></i>
+      </div>
+      <div class="min-w-0">
+        <p id="toast-title" class="font-display font-bold text-sm text-tizaAmarilla">¡Listo!</p>
+        <p id="toast-message" class="text-xs text-tizaCrema/90 truncate">Agregado a tu comanda.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. HEADER / BARRA SUPERIOR FIJA (Llamar y Menú siempre visibles juntos en móvil y escritorio) -->
+  <header class="sticky top-0 z-40 bg-pizarraOscura/95 backdrop-blur-md border-b-4 border-maderaMarco shadow-xl">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20 gap-2 sm:gap-4">
+        <!-- Marca con emblema madera/bombero -->
+        <a href="#inicio" class="flex items-center gap-2.5 sm:gap-3 group min-w-0">
+          <div class="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-bomberoRojo border-2 border-tizaAmarilla text-tizaCrema flex items-center justify-center shadow-md shrink-0 group-hover:rotate-3 transition-transform">
+            <i class="fa-solid fa-fire-flame-curved text-lg md:text-xl"></i>
+          </div>
+          <div class="min-w-0">
+            <span class="font-display font-bold text-base sm:text-xl md:text-2xl tracking-wide text-tizaAmarilla block leading-tight truncate">
+              La Picá del Bomber's
+            </span>
+            <span class="font-chalk text-xs sm:text-base text-tizaCrema/85 block leading-none mt-0.5 truncate">
+              Fuente de Soda • Sushi • Churrería
+            </span>
+          </div>
+        </a>
+
+        <!-- Navegación Secundaria Desktop -->
+        <nav class="hidden lg:flex items-center gap-6 text-sm font-bold text-tizaCrema/90">
+          <a href="#carta" onclick="setBrandFilter('pica')" class="hover:text-tizaAmarilla transition-colors">🔥 La Picá</a>
+          <a href="#carta" onclick="setBrandFilter('sushi')" class="hover:text-tizaAmarilla transition-colors">🍣 Bomber's Sushi</a>
+          <a href="#carta" onclick="setBrandFilter('churros')" class="hover:text-tizaAmarilla transition-colors">🧇 Churros y Más</a>
+          <a href="#ubicacion" class="hover:text-tizaAmarilla transition-colors">📍 Ubicación</a>
+        </nav>
+
+        <!-- Botones Principales Siempre Visibles Juntos: LLAMAR y MENÚ -->
+        <div class="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
+          <a
+            href="tel:+56452627956"
+            class="inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-bomberoRojo hover:bg-bomberoOscuro text-white font-display font-bold text-xs sm:text-sm px-3 py-2.5 sm:px-4 sm:py-2.5 rounded-xl border border-rose-300/30 shadow-md transition-all active:scale-95">
+            <i class="fa-solid fa-phone-volume text-xs sm:text-sm"></i>
+            <span>Llamar</span>
+          </a>
+
+          <a
+            href="#carta"
+            class="inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-tizaAmarilla hover:bg-yellow-300 text-pizarraOscura font-display font-bold text-xs sm:text-sm px-3 py-2.5 sm:px-4 sm:py-2.5 rounded-xl shadow-md transition-all active:scale-95">
+            <i class="fa-solid fa-utensils text-xs sm:text-sm"></i>
+            <span>Menú</span>
+          </a>
+
+          <a
+            href="https://wa.me/56452627956"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Escribir por WhatsApp"
+            class="hidden sm:inline-flex items-center justify-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs sm:text-sm px-3.5 py-2.5 rounded-xl shadow-md transition-all active:scale-95">
+            <i class="fa-brands fa-whatsapp text-base"></i>
+            <span class="hidden md:inline">WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. HERO SECTION ESTILO PIZARRA ARTESANAL ENMARCADA EN MADERA -->
+  <section id="inicio" class="pt-6 pb-10 md:pt-12 md:pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-7 items-stretch">
+
+        <!-- Gran Pizarra Principal de Bienvenida (7 columnas) -->
+        <div class="lg:col-span-7 bg-pizarraTablero wood-frame rounded-3xl p-5 sm:p-8 lg:p-9 flex flex-col justify-between relative overflow-hidden">
+          <!-- Cinta superior -->
+          <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b-2 border-dashed border-tizaCrema/20 mb-5">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/90 border border-emerald-400/50 text-emerald-300 text-xs font-extrabold">
+              <i class="fa-solid fa-motorcycle text-emerald-400"></i>
+              Delivery y Retiro en Local • Tu antojo, más cerca
+            </span>
+            <span class="font-chalk text-base sm:text-lg text-tizaAmarilla">
+              ★ Av. Barros Arana 196, Temuco ★
+            </span>
+          </div>
+
+          <div class="space-y-4">
+            <p class="font-chalk text-xl sm:text-2xl text-rose-400 tracking-wide">
+              Comida al paso • Sabor de estación • 100% de estación
+            </p>
+
+            <h1 class="font-display font-bold text-3xl sm:text-5xl lg:text-6xl text-tizaCrema leading-tight">
+              Buena Comida, <span class="text-tizaAmarilla underline decoration-bomberoRojo decoration-wavy underline-offset-8">Buenas Historias</span>
+            </h1>
+
+            <p class="font-chalk text-2xl sm:text-3xl text-tizaAmarilla pt-1">
+              “El verdadero sabor nos une”
+            </p>
+
+            <p class="text-sm sm:text-base text-tizaCrema/85 leading-relaxed max-w-2xl">
+              Tres cartas con identidad propia en un solo lugar en Temuco: nuestros platos caseros y sándwiches de <strong class="text-white">La Picá del Bomber's</strong>, los rolls y ceviches de <strong class="text-white">Bomber's Sushi</strong> y lo más dulce de <strong class="text-white">Churros y Algo Más</strong>.
+            </p>
+          </div>
+
+          <!-- Botones Lado a Lado en el Hero: LLAMAR + MENÚ + WhatsApp -->
+          <div class="pt-6 mt-6 border-t-2 border-dashed border-tizaCrema/20 space-y-3">
+            <div class="grid grid-cols-2 gap-3">
+              <a
+                href="tel:+56452627956"
+                class="inline-flex items-center justify-center gap-2 bg-bomberoRojo hover:bg-bomberoOscuro text-white font-display font-bold text-sm sm:text-base px-4 py-3.5 rounded-2xl shadow-lg transition-all active:scale-95">
+                <i class="fa-solid fa-phone-volume"></i>
+                <span>Llamar</span>
+              </a>
+              <a
+                href="#carta"
+                class="inline-flex items-center justify-center gap-2 bg-tizaAmarilla hover:bg-yellow-300 text-pizarraOscura font-display font-bold text-sm sm:text-base px-4 py-3.5 rounded-2xl shadow-lg transition-all active:scale-95">
+                <i class="fa-solid fa-utensils"></i>
+                <span>Menú</span>
+              </a>
+            </div>
+
+            <a
+              href="https://wa.me/56452627956"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-sm sm:text-base px-5 py-3 rounded-2xl shadow-md transition-all active:scale-95">
+              <i class="fa-brands fa-whatsapp text-lg"></i>
+              <span>Pedir por WhatsApp (+56 45 2627956)</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Pizarra Derecha: Menú del Día Escrito a Tiza + Accesos a las 3 Líneas (5 columnas) -->
+        <div class="lg:col-span-5 flex flex-col gap-5">
+          <!-- Pizarra Menú Hoy -->
+          <div class="bg-pizarraTablero wood-frame rounded-3xl p-5 sm:p-6 relative">
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <span class="px-3 py-1 rounded-lg bg-bomberoRojo text-white text-xs font-extrabold uppercase tracking-wider">
+                Pizarra del Día
+              </span>
+              <span class="font-chalk text-base sm:text-lg text-emerald-300">
+                <i class="fa-solid fa-motorcycle mr-1"></i> Salón y Delivery
+              </span>
+            </div>
+
+            <div class="text-center border-b-2 border-dashed border-tizaCrema/25 pb-3 mb-4">
+              <h2 class="font-chalk text-3xl sm:text-4xl text-tizaAmarilla tracking-wide">¡Menú Hoy!</h2>
+              <p class="text-xs text-tizaCrema/75">Todos los platos del día incluyen Ensalada + Sopaipilla</p>
+            </div>
+
+            <ul class="space-y-3 text-sm">
+              <li class="flex items-start gap-3 bg-pizarraOscura/60 p-3 rounded-2xl border border-tizaCrema/10">
+                <span class="text-2xl shrink-0">🍖</span>
+                <div>
+                  <p class="font-display font-bold text-tizaAmarilla text-base leading-tight">Pernil</p>
+                  <p class="text-xs text-tizaCrema/85 mt-0.5">Con Papas cocidas, Arroz o Papas fritas + Ensalada + Sopaipilla</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-3 bg-pizarraOscura/60 p-3 rounded-2xl border border-tizaCrema/10">
+                <span class="text-2xl shrink-0">🍲</span>
+                <div>
+                  <p class="font-display font-bold text-tizaAmarilla text-base leading-tight">Cazuela de Ave</p>
+                  <p class="text-xs text-tizaCrema/85 mt-0.5">+ Ensalada + Sopaipilla</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-3 bg-pizarraOscura/60 p-3 rounded-2xl border border-tizaCrema/10">
+                <span class="text-2xl shrink-0">🍗</span>
+                <div>
+                  <p class="font-display font-bold text-tizaAmarilla text-base leading-tight">Pollo Asado (Tuto o Pechuga)</p>
+                  <p class="text-xs text-tizaCrema/85 mt-0.5">Con Arroz o Papas fritas + Ensalada y Sopaipilla</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Accesos Rápidos a las 3 Cartas -->
+          <div class="grid grid-cols-3 gap-2.5">
+            <a href="#carta" onclick="setBrandFilter('pica')" class="bg-pizarraTablero hover:bg-pizarraOscura border-2 border-maderaMarco rounded-2xl p-3 text-center transition-all hover:-translate-y-0.5">
+              <span class="text-2xl block mb-1">🔥</span>
+              <span class="font-display font-bold text-xs text-tizaAmarilla block leading-tight">La Picá</span>
+              <span class="text-[10px] text-tizaCrema/75 block mt-0.5">Picada &amp; Menú</span>
+            </a>
+            <a href="#carta" onclick="setBrandFilter('sushi')" class="bg-pizarraTablero hover:bg-pizarraOscura border-2 border-maderaMarco rounded-2xl p-3 text-center transition-all hover:-translate-y-0.5">
+              <span class="text-2xl block mb-1">🍣</span>
+              <span class="font-display font-bold text-xs text-rose-400 block leading-tight">Bomber's Sushi</span>
+              <span class="text-[10px] text-tizaCrema/75 block mt-0.5">Promos &amp; Gohan</span>
+            </a>
+            <a href="#carta" onclick="setBrandFilter('churros')" class="bg-pizarraTablero hover:bg-pizarraOscura border-2 border-maderaMarco rounded-2xl p-3 text-center transition-all hover:-translate-y-0.5">
+              <span class="text-2xl block mb-1">🧇</span>
+              <span class="font-display font-bold text-xs text-amber-300 block leading-tight">Churros y Más</span>
+              <span class="text-[10px] text-tizaCrema/75 block mt-0.5">Waffles &amp; Café</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. CATÁLOGO INTERACTIVO COMPLETO (#carta) -->
+  <section id="carta" class="py-10 md:py-16 border-t-4 border-maderaMarco bg-pizarraOscura/45 scroll-mt-16 md:scroll-mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Título Sección Carta -->
+      <div class="text-center max-w-3xl mx-auto mb-8 space-y-2">
+        <span class="font-chalk text-xl text-rose-400 tracking-wide">★ Nuestra Pizarra Completa en Temuco ★</span>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-tizaCrema">
+          Menú y Carta Completa
+        </h2>
+        <p class="text-sm sm:text-base text-tizaCrema/80">
+          Filtra por marca, busca cualquier plato y agrégalo a tu comanda para enviarlo directo a nuestro WhatsApp.
+        </p>
+      </div>
+
+      <!-- Barra de Búsqueda y Filtros (NO sticky: se desplaza libremente con el scroll) -->
+      <div id="search-filter-panel" class="bg-pizarraTablero wood-frame rounded-3xl p-4 sm:p-6 mb-8 space-y-4">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <!-- Pestañas Principales de las 3 Líneas -->
+          <div class="flex flex-wrap gap-2" role="tablist">
+            <button data-brand="todos" onclick="setBrandFilter('todos')" class="brand-tab px-3.5 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-display font-bold transition-all bg-tizaAmarilla text-pizarraOscura shadow">
+              Todas las Cartas (3)
+            </button>
+            <button data-brand="pica" onclick="setBrandFilter('pica')" class="brand-tab px-3.5 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-pizarraOscura text-tizaCrema hover:text-tizaAmarilla border border-maderaMarco">
+              🔥 La Picá y Menú
+            </button>
+            <button data-brand="sushi" onclick="setBrandFilter('sushi')" class="brand-tab px-3.5 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-pizarraOscura text-tizaCrema hover:text-tizaAmarilla border border-maderaMarco">
+              🍣 Bomber's Sushi
+            </button>
+            <button data-brand="churros" onclick="setBrandFilter('churros')" class="brand-tab px-3.5 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-pizarraOscura text-tizaCrema hover:text-tizaAmarilla border border-maderaMarco">
+              🧇 Churros y Algo Más
+            </button>
+          </div>
+
+          <!-- Buscador Instantáneo -->
+          <div class="relative w-full lg:w-80">
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-tizaAmarilla text-sm"></i>
+            <input
+              type="text"
+              id="menu-search-input"
+              oninput="handleSearch(this.value)"
+              placeholder="Buscar pernil, promo, waffle, sándwich..."
+              class="w-full bg-pizarraOscura border-2 border-maderaMarco focus:border-tizaAmarilla text-tizaCrema placeholder-tizaCrema/45 text-sm rounded-xl pl-10 pr-9 py-2.5 focus:outline-none"
+            />
+            <button id="clear-search-btn" onclick="clearSearch()" aria-label="Limpiar búsqueda" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-tizaCrema/60 hover:text-white">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Píldoras de Subcategoría -->
+        <div id="subcategory-pills" class="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar text-xs">
+          <!-- Renderizado dinámico por JS -->
+        </div>
+      </div>
+
+      <!-- Contador de resultados -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-tizaCrema/75 mb-6 px-1">
+        <p id="results-counter" class="font-bold">Mostrando todos los productos</p>
+        <p><i class="fa-solid fa-circle-info text-tizaAmarilla mr-1"></i> Los productos sin precio fijo se confirman al enviar tu pedido por WhatsApp.</p>
+      </div>
+
+      <!-- Contenedor Principal de Cartas y Tarjetas -->
+      <div id="catalog-container" class="space-y-14">
+        <!-- Renderizado completo desde JS -->
+      </div>
+
+      <!-- Mensaje cuando no hay coincidencias -->
+      <div id="empty-search-state" class="hidden text-center py-16 bg-pizarraTablero wood-frame rounded-3xl">
+        <div class="w-16 h-16 rounded-2xl bg-pizarraOscura border border-maderaMarco text-tizaAmarilla flex items-center justify-center text-2xl mx-auto mb-4">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <h3 class="font-display font-bold text-2xl text-tizaCrema mb-2">No encontramos ese plato en la pizarra</h3>
+        <p class="text-sm text-tizaCrema/75 mb-5">Intenta buscar con otra palabra o vuelve a ver toda la carta completa.</p>
+        <button onclick="resetAllFilters()" class="px-5 py-2.5 rounded-xl bg-tizaAmarilla hover:bg-yellow-300 text-pizarraOscura font-display font-bold text-sm">
+          Ver toda la pizarra
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4. SECCIÓN UBICACIÓN, HORARIOS Y CONTACTO EN TEMUCO -->
+  <section id="ubicacion" class="py-14 md:py-20 border-t-4 border-maderaMarco">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12 space-y-2">
+        <span class="font-chalk text-xl text-tizaAmarilla">★ Te Esperamos en Temuco ★</span>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-tizaCrema">
+          Ubicación, Horarios y Contacto
+        </h2>
+        <p class="text-sm sm:text-base text-tizaCrema/80">
+          Visítanos en nuestra fuente de soda, pide retiro en local o solicita delivery en Temuco.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <!-- Columna Información (5 cols) -->
+        <div class="lg:col-span-5 space-y-5 flex flex-col justify-between">
+
+          <!-- Dirección -->
+          <div class="bg-pizarraTablero wood-frame rounded-3xl p-5 sm:p-6 space-y-3">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-bomberoRojo text-white flex items-center justify-center text-xl shrink-0 shadow">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div class="space-y-1 flex-1">
+                <h3 class="font-display font-bold text-lg text-tizaAmarilla">Dirección del Local</h3>
+                <p class="text-sm text-tizaCrema leading-relaxed font-semibold">
+                  Av. Barros Arana 196, Temuco, Región de la Araucanía, Chile
+                </p>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-1">
+              <a href="https://www.google.com/maps/search/?api=1&query=Av.+Barros+Arana+196,+Temuco,+Araucania,+Chile" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-extrabold text-pizarraOscura bg-tizaAmarilla hover:bg-yellow-300 px-3.5 py-2 rounded-xl transition-colors">
+                <i class="fa-solid fa-diamond-turn-right"></i> Cómo llegar
+              </a>
+              <button onclick="copyText('Av. Barros Arana 196, Temuco, Región de la Araucanía, Chile', 'Dirección copiada al portapapeles')" class="inline-flex items-center gap-1.5 text-xs font-bold text-tizaCrema bg-pizarraOscura hover:bg-black/60 border border-maderaMarco px-3.5 py-2 rounded-xl transition-colors">
+                <i class="fa-regular fa-copy"></i> Copiar dirección
+              </button>
+            </div>
+          </div>
+
+          <!-- Teléfono y WhatsApp -->
+          <div class="bg-pizarraTablero wood-frame rounded-3xl p-5 sm:p-6 space-y-3">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center text-2xl shrink-0 shadow">
+                <i class="fa-brands fa-whatsapp"></i>
+              </div>
+              <div class="space-y-1 flex-1 min-w-0">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <h3 class="font-display font-bold text-lg text-tizaAmarilla">Pedidos y Reparto</h3>
+                  <span class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full bg-emerald-950 border border-emerald-400/50 text-emerald-300">
+                    Delivery y Retiro
+                  </span>
+                </div>
+                <p class="font-display font-bold text-xl sm:text-2xl text-tizaCrema tracking-wide">
+                  +56 45 2627956
+                </p>
+                <p class="text-xs text-tizaCrema/75">
+                  Atención directa para La Picá, Bomber's Sushi y Churros y Algo Más.
+                </p>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-1">
+              <a href="https://wa.me/56452627956" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-extrabold text-white bg-emerald-600 hover:bg-emerald-500 px-3.5 py-2.5 rounded-xl shadow transition-colors">
+                <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
+              </a>
+              <a href="tel:+56452627956" class="inline-flex items-center gap-1.5 text-xs font-extrabold text-white bg-bomberoRojo hover:bg-bomberoOscuro px-3.5 py-2.5 rounded-xl shadow transition-colors">
+                <i class="fa-solid fa-phone"></i> Llamar
+              </a>
+              <button onclick="copyText('+56 45 2627956', 'Teléfono +56 45 2627956 copiado')" class="inline-flex items-center gap-1.5 text-xs font-bold text-tizaCrema bg-pizarraOscura hover:bg-black/60 border border-maderaMarco px-3.5 py-2.5 rounded-xl transition-colors">
+                <i class="fa-regular fa-copy"></i> Copiar
+              </button>
+            </div>
+          </div>
+
+          <!-- Horarios de Atención (Limpios, sin indicador Verificando...) -->
+          <div class="bg-pizarraTablero wood-frame rounded-3xl p-5 sm:p-6">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-tizaAmarilla text-pizarraOscura flex items-center justify-center text-xl shrink-0 shadow">
+                <i class="fa-regular fa-clock"></i>
+              </div>
+              <div class="space-y-2.5 flex-1">
+                <h3 class="font-display font-bold text-lg text-tizaAmarilla">Horarios de Atención</h3>
+                <ul class="space-y-2 text-sm">
+                  <li class="flex items-center justify-between py-1.5 border-b border-dashed border-tizaCrema/20">
+                    <span class="text-tizaCrema font-semibold">Lunes a Jueves</span>
+                    <span class="text-tizaAmarilla font-extrabold">12:00 - 23:00 hrs</span>
+                  </li>
+                  <li class="flex items-center justify-between py-1.5 border-b border-dashed border-tizaCrema/20">
+                    <span class="text-tizaCrema font-semibold">Viernes y Sábado</span>
+                    <span class="text-tizaAmarilla font-extrabold">12:00 - 00:30 hrs</span>
+                  </li>
+                  <li class="flex items-center justify-between py-1.5 border-b border-dashed border-tizaCrema/20">
+                    <span class="text-tizaCrema font-semibold">Domingo</span>
+                    <span class="text-tizaAmarilla font-extrabold">12:30 - 22:00 hrs</span>
+                  </li>
+                  <li class="flex items-center justify-between pt-1 text-xs">
+                    <span class="text-tizaCrema/75">Servicio</span>
+                    <span class="text-emerald-300 font-extrabold">Salón • Retiro • Delivery Temuco</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Columna Mapa Google Maps Embebido (7 cols) -->
+        <div class="lg:col-span-7 flex flex-col">
+          <div class="bg-pizarraTablero wood-frame rounded-3xl overflow-hidden flex-1 flex flex-col min-h-[360px]">
+            <div class="bg-pizarraOscura px-4 sm:px-5 py-3.5 border-b-2 border-maderaMarco flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2 text-xs sm:text-sm font-bold text-tizaAmarilla min-w-0">
+                <i class="fa-solid fa-map-location-dot text-bomberoRojo shrink-0"></i>
+                <span class="truncate">Av. Barros Arana 196, Temuco, Región de la Araucanía</span>
+              </div>
+              <a href="https://www.google.com/maps/dir/?api=1&destination=Av.+Barros+Arana+196,+Temuco,+Chile" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-tizaCrema hover:text-tizaAmarilla shrink-0">
+                Cómo llegar <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+              </a>
+            </div>
+            <div class="relative flex-1 w-full min-h-[320px] bg-pizarraOscura">
+              <iframe
+                title="Mapa de La Picá del Bomber's en Av. Barros Arana 196, Temuco"
+                class="w-full h-full border-0 min-h-[350px]"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://maps.google.com/maps?q=Av.%20Barros%20Arana%20196,%20Temuco,%20Chile&t=&z=16&ie=UTF8&iwloc=&output=embed">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. FOOTER ARTESANAL -->
+  <footer class="bg-pizarraOscura border-t-4 border-maderaMarco text-tizaCrema/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-tizaCrema/15">
+        <div class="space-y-3">
+          <div class="flex items-center gap-2.5">
+            <div class="w-9 h-9 rounded-xl bg-bomberoRojo text-white flex items-center justify-center">
+              <i class="fa-solid fa-fire-flame-curved"></i>
+            </div>
+            <span class="font-display font-bold text-xl text-tizaAmarilla">La Picá del Bomber's</span>
+          </div>
+          <p class="text-sm text-tizaCrema/80 leading-relaxed">
+            <strong class="text-white">Buena Comida, Buenas Historias</strong> • <em>El verdadero sabor nos une</em>. Tres cartas en Temuco con salón, retiro y reparto a domicilio.
+          </p>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="font-display font-bold text-tizaAmarilla text-base">Nuestras 3 Cartas</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#carta" onclick="setBrandFilter('pica')" class="hover:text-tizaAmarilla transition-colors">🔥 La Picá del Bomber's &amp; Menú del Día</a></li>
+            <li><a href="#carta" onclick="setBrandFilter('sushi')" class="hover:text-tizaAmarilla transition-colors">🍣 Bomber's Sushi (Sabores que encienden)</a></li>
+            <li><a href="#carta" onclick="setBrandFilter('churros')" class="hover:text-tizaAmarilla transition-colors">🧇 Churros y Algo Más (Dulces momentos)</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="font-display font-bold text-tizaAmarilla text-base">Contacto y Reparto</h4>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-location-dot text-bomberoRojo mt-1"></i>
+              <span>Av. Barros Arana 196, Temuco, Región de la Araucanía</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+              <a href="https://wa.me/56452627956" target="_blank" rel="noopener noreferrer" class="font-bold text-white hover:text-tizaAmarilla transition-colors">+56 45 2627956</a>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i class="fa-solid fa-motorcycle text-tizaAmarilla"></i>
+              <span>Delivery y Retiro en Local • Tu antojo, más cerca</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-tizaCrema/60">
+        <p>© <span id="current-year">2026</span> La Picá del Bomber's — Temuco, Chile.</p>
+        <p>Av. Barros Arana 196 • Teléfono y WhatsApp +56 45 2627956</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BOTÓN FLOTANTE DISCRETO EN ESQUINA INFERIOR IZQUIERDA ("🔍 Buscar") -->
+  <button
+    id="floating-search-btn"
+    type="button"
+    onclick="scrollToSearchBar()"
+    aria-label="Subir al buscador"
+    class="fixed bottom-5 left-4 z-40 hidden items-center gap-1.5 bg-pizarraTablero/95 hover:bg-pizarraOscura text-tizaAmarilla border-2 border-maderaBrillo text-xs font-extrabold px-4 py-3 rounded-full shadow-2xl backdrop-blur-md transition-all active:scale-95">
+    <span>🔍</span>
+    <span>Buscar</span>
+  </button>
+
+  <!-- BOTÓN FLOTANTE DE COMANDA / CARRITO EN ESQUINA INFERIOR DERECHA -->
+  <button
+    id="floating-cart-btn"
+    type="button"
+    onclick="toggleCartDrawer(true)"
+    aria-label="Abrir mi pedido"
+    class="fixed bottom-5 right-4 z-40 inline-flex items-center gap-2.5 sm:gap-3 bg-bomberoRojo hover:bg-bomberoOscuro text-white border-2 border-tizaAmarilla px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-full shadow-2xl transition-all active:scale-95">
+    <div class="relative flex items-center justify-center w-8 h-8 rounded-full bg-pizarraOscura text-tizaAmarilla">
+      <i class="fa-solid fa-bag-shopping text-sm"></i>
+      <span id="floating-cart-count" class="absolute -top-1.5 -right-1.5 bg-tizaAmarilla text-pizarraOscura text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center shadow">
+        0
+      </span>
+    </div>
+    <div class="text-left pr-1">
+      <span class="block text-[10px] uppercase tracking-wider text-tizaCrema/85 font-extrabold leading-none">Mi Comanda</span>
+      <span id="floating-cart-total" class="block text-sm font-display font-bold text-white leading-tight mt-0.5">$0</span>
+    </div>
+  </button>
+
+  <!-- DRAWER LATERAL DEL CARRITO DE PEDIDOS WHATSAPP -->
+  <div id="cart-drawer-backdrop" onclick="toggleCartDrawer(false)" class="fixed inset-0 bg-black/75 backdrop-blur-xs z-50 hidden transition-opacity"></div>
+  <aside id="cart-drawer" aria-label="Carrito de Pedido" class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-pizarraTablero border-l-4 border-maderaMarco z-50 transform translate-x-full transition-transform duration-300 flex flex-col shadow-2xl">
+    <!-- Cabecera Drawer -->
+    <div class="bg-pizarraOscura text-tizaCrema px-5 sm:px-6 py-4 border-b-2 border-maderaMarco flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-bomberoRojo text-white flex items-center justify-center">
+          <i class="fa-solid fa-bag-shopping"></i>
+        </div>
+        <div>
+          <h3 class="font-display font-bold text-lg text-tizaAmarilla leading-none">Tu Comanda</h3>
+          <p class="text-[11px] text-tizaCrema/75 mt-1">La Picá del Bomber's • Temuco</p>
+        </div>
+      </div>
+      <button onclick="toggleCartDrawer(false)" aria-label="Cerrar carrito" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 text-tizaCrema flex items-center justify-center">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Modalidad y Datos del Cliente -->
+    <div class="px-5 sm:px-6 py-4 bg-pizarraOscura/70 border-b border-tizaCrema/15 space-y-2.5">
+      <label class="block text-[11px] font-extrabold uppercase tracking-wider text-tizaAmarilla">
+        Modalidad de entrega
+      </label>
+      <div class="grid grid-cols-2 gap-2">
+        <button type="button" id="drawer-mode-delivery" onclick="setDeliveryMode('Delivery a domicilio')" class="py-2.5 px-3 rounded-xl text-xs font-extrabold bg-emerald-600 text-white shadow flex items-center justify-center gap-1.5 transition-all">
+          <i class="fa-solid fa-motorcycle"></i> Delivery
+        </button>
+        <button type="button" id="drawer-mode-pickup" onclick="setDeliveryMode('Retiro en local')" class="py-2.5 px-3 rounded-xl text-xs font-bold bg-pizarraTablero text-tizaCrema border border-maderaMarco hover:text-tizaAmarilla flex items-center justify-center gap-1.5 transition-all">
+          <i class="fa-solid fa-store"></i> Retiro en local
+        </button>
+      </div>
+      <div>
+        <input
+          type="text"
+          id="customer-info-input"
+          placeholder="Tu dirección en Temuco o tu nombre (opcional)"
+          class="w-full bg-pizarraOscura border-2 border-maderaMarco focus:border-tizaAmarilla text-tizaCrema placeholder-tizaCrema/45 text-xs rounded-xl px-3.5 py-2.5 focus:outline-none"
+        />
+      </div>
+    </div>
+
+    <!-- Lista de Ítems -->
+    <div id="cart-items-container" class="flex-1 overflow-y-auto p-5 sm:p-6 space-y-3">
+      <!-- Renderizado por JS -->
+    </div>
+
+    <!-- Pie de Carrito: Total y Botones -->
+    <div class="p-5 sm:p-6 bg-pizarraOscura border-t-2 border-maderaMarco space-y-4">
+      <div class="space-y-1.5">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-tizaCrema/80">Total estimado (ítems con precio):</span>
+          <span id="cart-subtotal-price" class="font-display font-bold text-2xl text-tizaAmarilla">$0</span>
+        </div>
+        <p id="cart-unpriced-note" class="hidden text-[11px] font-semibold text-amber-200 bg-amber-950/70 border border-amber-500/40 rounded-xl px-3 py-2">
+          <i class="fa-solid fa-circle-info mr-1 text-tizaAmarilla"></i> Incluye ítems cuyo valor se confirma directamente por WhatsApp.
+        </p>
+      </div>
+
+      <div class="space-y-2">
+        <button onclick="sendOrderToWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-sm py-3.5 px-5 rounded-2xl shadow-lg flex items-center justify-center gap-2 transition-all">
+          <i class="fa-brands fa-whatsapp text-lg"></i> Enviar Pedido por WhatsApp
+        </button>
+        <div class="grid grid-cols-2 gap-2">
+          <button onclick="copyCartMessage()" class="bg-pizarraTablero hover:bg-black/50 text-tizaAmarilla border border-maderaMarco font-bold text-xs py-2.5 px-3 rounded-xl flex items-center justify-center gap-1.5 transition-colors">
+            <i class="fa-regular fa-copy"></i> Copiar Pedido
+          </button>
+          <button onclick="clearCart()" class="bg-pizarraTablero hover:bg-rose-950/60 text-tizaCrema/80 hover:text-rose-300 border border-maderaMarco font-bold text-xs py-2.5 px-3 rounded-xl flex items-center justify-center gap-1.5 transition-colors">
+            <i class="fa-solid fa-trash-can"></i> Vaciar
+          </button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- JAVASCRIPT: CATÁLOGO COMPLETO DE LAS 3 LÍNEAS Y CARRITO WHATSAPP -->
+  <script>
+    // =========================================================================
+    // 1. CATÁLOGO COMPLETO DE LA PICÁ DEL BOMBER'S (3 LÍNEAS)
+    // =========================================================================
+    const CATALOG_DATA = [
+      // -----------------------------------------------------------------------
+      // LÍNEA 1: LA PICÁ DEL BOMBER'S & MENÚ DEL DÍA
+      // -----------------------------------------------------------------------
+      {
+        id: 'pica-pernil',
+        brand: 'pica',
+        brandName: "La Picá del Bomber's",
+        subcategory: 'Menú del Día (Pizarra)',
+        icon: '🍖',
+        badge: 'Menú del Día',
+        title: 'Pernil',
+        description: 'Pernil casero con Papas cocidas, Arroz o Papas fritas + Ensalada + Sopaipilla.',
+        variants: [
+          { label: 'Con Papas cocidas + Ensalada + Sopaipilla', price: null },
+          { label: 'Con Arroz + Ensalada + Sopaipilla', price: null },
+          { label: 'Con Papas fritas + Ensalada + Sopaipilla', price: null },
+        ],
+      },
+      {
+        id: 'pica-cazuela',
+        brand: 'pica',
+        brandName: "La Picá del Bomber's",
+        subcategory: 'Menú del Día (Pizarra)',
+        icon: '🍲',
+        badge: 'Menú del Día',
+        title: 'Cazuela de Ave',
+        description: 'Cazuela tradicional casera + Ensalada + Sopaipilla.',
+        variants: [
+          { label: '+ Ensalada + Sopaipilla', price: null },
+        ],
+      },
+      {
+        id: 'pica-pollo-asado',
+        brand: 'pica',
+        brandName: "La Picá del Bomber's",
+        subcategory: 'Menú del Día (Pizarra)',
+        icon: '🍗',
+        badge: 'Menú del Día',
+        title: 'Pollo Asado (Tuto o Pechuga)',
+        description: 'Pollo asado Tuto o Pechuga con Arroz o Papas fritas + Ensalada y Sopaipilla.',
+        variants: [
+          { label: 'Tuto con Arroz + Ensalada y Sopaipilla', price: null },
+          { label: 'Tuto con Papas fritas + Ensalada y Sopaipilla', price: null },
+          { label: 'Pechuga con Arroz + Ensalada y Sopaipilla', price: null },
+          { label: 'Pechuga con Papas fritas + Ensalada y Sopaipilla', price: null },
+        ],
+      },
+      {
+        id: 'pica-colaciones',
+        brand: 'pica',
+        brandName: "La Picá del Bomber's",
+        subcategory: 'Colaciones y Pollo a las Brasas',
+        icon: '🍽️',
+        badge: 'Colaciones',
+        title: 'Colaciones Caseras',
+        description: '1/4 Pollo + Papas, Chuleta Ahumada Premium, Bisteca a lo Pobre, Costilla + Papas y Chuleta Tradicional + Papas.',
+        variants: [
+          { label: '1/4 Pollo + Papas', price: null },
+          { label: 'Chuleta Ahumada Premium', price: null },
+          { label: 'Bisteca a lo Pobre', price: null },
+          { label: 'Costilla + Papas', price: null },
+          { label: 'Chuleta Tradicional + Papas', price: null },
+        ],
+      },
+      {
+        id: 'pica-pollo-brasas',
+        brand: 'pica',
+        brandName: "La Picá del Bomber's",
+        subcategory: 'Colaciones y Pollo a las Brasas',
+        icon: '🔥',
+        badge: 'A las Brasas',
+        title: 'Pollo a las Brasas',
+        description: 'Pollo asado a las brasas jugoso disponible en formato Entero, 1/2 Pollo o 1/4 Pollo.',
+        variants: [
+          { label: 'Entero', price: null },
+          { label: '1/2 Pollo', price: null },
+          { label: '1/4 Pollo', price: null },
+        ],
+      },
+      {
+        id: 'pica-hamburguesas',
+        brand: 'pica',
+        brandName: "La Picá del Bomber's",
+        subcategory: 'Hamburguesas y Sándwiches 01-10',
+        icon: '🍔',
+        badge: 'Hamburguesas',
+        title: 'Hamburguesas Bomber’s',
+        description: 'Italiana (Tomate, palta, mayo), Barros Luco (Queso, mayo), Chacarero (Poroto verde, ají, mayo), Chemilico (Cebolla, huevo, tomate, mayo) y Bacon.',
+        variants: [
+          { label: 'Italiana (Tomate, palta, mayo)', price: null },
+          { label: 'Barros Luco (Queso, mayo)', price: null },
+          { label: 'Chacarero (Poroto verde, ají, mayo)', price: null },
+          { label: 'Chemilico (Cebolla, huevo, tomate, mayo)', price: null },
+          { label: 'Bacon', price: null },
+        ],
+      },
+      {
+        id: 'pica-sandwiches',
+        brand: 'pica',
+        brandName: "La Picá del Bomber's",
+        subcategory: 'Hamburguesas y Sándwiches 01-10',
+        icon: '🥪',
+        badge: 'Sándwiches 01 al 10',
+        title: 'Sándwiches Numerados (01 al 10)',
+        description: 'Del 01 Carne - Tocino - Queso - Mayo (NUEVO) hasta el 10 Champiñón - Tomate - Palta - Mayo.',
+        variants: [
+          { label: '01 Carne - Tocino - Queso - Mayo (NUEVO)', price: null },
+          { label: '02 Carne - Tomate - Mayo', price: null },
+          { label: '03 Carne - Tomate - Palta - Mayo', price: null },
+          { label: '04 Carne - Tomate - Poroto verde - Ají - Mayo', price: null },
+          { label: '05 Carne - Tomate - Palta - Lechuga - Mayo', price: null },
+          { label: '06 Carne - Queso - Mayo', price: null },
+          { label: '07 Carne - Queso - Palta - Mayo', price: null },
+          { label: '08 Carne - Cebolla - Huevo - Mayo', price: null },
+          { label: '09 Súper Bacon - Champiñón - Cebolla - Huevo', price: null },
+          { label: '10 Champiñón - Tomate - Palta - Mayo', price: null },
+        ],
+      },
+      {
+        id: 'pica-completos',
+        brand: 'pica',
+        brandName: "La Picá del Bomber's",
+        subcategory: 'Completos, Chorrillanas y Burritos',
+        icon: '🌭',
+        badge: 'Completos & As',
+        title: 'Completos y As',
+        description: 'Italiano, Dinámico, As y Vegetariano preparados al momento.',
+        variants: [
+          { label: 'Italiano (Vienesa, tomate, palta)', price: null },
+          { label: 'Dinámico (Vienesa, tomate, palta, chucrut, americana)', price: null },
+          { label: 'As (Carne, tomate, palta)', price: null },
+          { label: 'Vegetariano (Champiñón, mayo, tomate, palta, lechuga)', price: null },
+        ],
+      },
+      {
+        id: 'pica-chorrillanas',
+        brand: 'pica',
+        brandName: "La Picá del Bomber's",
+        subcategory: 'Completos, Chorrillanas y Burritos',
+        icon: '🍳',
+        badge: 'Para Compartir',
+        title: 'Chorrillanas',
+        description: 'Papas fritas caseras con carne, cebolla dorada y huevos para 2, 3, 4 o 6 personas.',
+        variants: [
+          { label: '2 Personas', price: null },
+          { label: '3 Personas', price: null },
+          { label: '4 Personas Full', price: null },
+          { label: '6 Personas Full', price: null },
+        ],
+      },
+      {
+        id: 'pica-papas-burritos',
+        brand: 'pica',
+        brandName: "La Picá del Bomber's",
+        subcategory: 'Completos, Chorrillanas y Burritos',
+        icon: '🌯',
+        badge: 'Al Paso',
+        title: 'Papas Fritas y Burritos',
+        description: 'Papas Fritas Mediana o Grande y Burritos Clásico o Bombers.',
+        variants: [
+          { label: 'Papas Fritas — Mediana', price: null },
+          { label: 'Papas Fritas — Grande', price: null },
+          { label: 'Burrito Clásico', price: null },
+          { label: 'Burrito Bombers', price: null },
+        ],
+      },
+
+      // -----------------------------------------------------------------------
+      // LÍNEA 2: BOMBER'S SUSHI ("Sabores que encienden")
+      // -----------------------------------------------------------------------
+      {
+        id: 'sushi-trifulca',
+        brand: 'sushi',
+        brandName: "Bomber's Sushi",
+        subcategory: 'Promociones de Sushi',
+        icon: '🍣',
+        badge: '10 Piezas',
+        title: 'Promo Trifulca (10 pzas)',
+        description: 'Panko Pollo palta queso; Palta Camarón cebollín queso.',
+        variants: [
+          { label: 'Promo Trifulca 10 pzas', price: 5490 },
+        ],
+      },
+      {
+        id: 'sushi-napoleon',
+        brand: 'sushi',
+        brandName: "Bomber's Sushi",
+        subcategory: 'Promociones de Sushi',
+        icon: '🥑',
+        badge: '20 Piezas • Vegetariano',
+        title: 'Promo Napoleón (20 pzas)',
+        description: 'Vegetariano: Panko Champiñón cebollín queso; Palta Pimentón palmito queso.',
+        variants: [
+          { label: 'Promo Napoleón 20 pzas (Vegetariano)', price: 8490 },
+        ],
+      },
+      {
+        id: 'sushi-gemelo',
+        brand: 'sushi',
+        brandName: "Bomber's Sushi",
+        subcategory: 'Promociones de Sushi',
+        icon: '🍣',
+        badge: '20 Piezas',
+        title: 'Promo Gemelo (20 pzas)',
+        description: 'Panko Pollo palta queso; Palta Camarón cebollín queso.',
+        variants: [
+          { label: 'Promo Gemelo 20 pzas', price: 9590 },
+        ],
+      },
+      {
+        id: 'sushi-acople',
+        brand: 'sushi',
+        brandName: "Bomber's Sushi",
+        subcategory: 'Promociones de Sushi',
+        icon: '🌿',
+        badge: '30 Piezas • Vegetariano',
+        title: 'Promo Acople (30 pzas)',
+        description: 'Vegetariano: Panko Champiñón cebollín queso; Queso Kanikama palta pimentón; Hosomaki Arroz queso.',
+        variants: [
+          { label: 'Promo Acople 30 pzas (Vegetariano)', price: 11590 },
+        ],
+      },
+      {
+        id: 'sushi-en-llamas',
+        brand: 'sushi',
+        brandName: "Bomber's Sushi",
+        subcategory: 'Promociones de Sushi',
+        icon: '🔥',
+        badge: '40 Piezas',
+        title: 'Promo En Llamas (40 pzas)',
+        description: 'Panko Pollo palta queso; Palta Pollo cebollín queso; Sésamo Pimentón queso palta; Queso Kanikama palta cebollín.',
+        variants: [
+          { label: 'Promo En Llamas 40 pzas', price: 15490 },
+        ],
+      },
+      {
+        id: 'sushi-linea-fuego',
+        brand: 'sushi',
+        brandName: "Bomber's Sushi",
+        subcategory: 'Promociones de Sushi',
+        icon: '🚒',
+        badge: '40 Piezas Full',
+        title: 'Promo Línea de Fuego (40 pzas)',
+        description: 'Panko Pollo queso palta; Palta Pollo camarón queso cebollín; Panko Pollo queso cebollín; Panko Salmón queso palta.',
+        variants: [
+          { label: 'Promo Línea de Fuego 40 pzas', price: 17890 },
+        ],
+      },
+      {
+        id: 'sushi-codigo-rojo',
+        brand: 'sushi',
+        brandName: "Bomber's Sushi",
+        subcategory: 'Promociones de Sushi',
+        icon: '🚨',
+        badge: '50 Piezas',
+        title: 'Promo Código Rojo (50 pzas)',
+        description: 'Panko Pollo queso cebollín; Palta Pollo queso palta; Sésamo Palmito queso cebollín; Queso Camarón palta cebollín; Palta Pollo queso pimentón.',
+        variants: [
+          { label: 'Promo Código Rojo 50 pzas', price: 19590 },
+        ],
+      },
+      {
+        id: 'sushi-super-bombers',
+        brand: 'sushi',
+        brandName: "Bomber's Sushi",
+        subcategory: 'Promociones de Sushi',
+        icon: '👑',
+        badge: '70 Piezas • Familiar',
+        title: "Promo Super Bomber's (70 pzas)",
+        description: 'Panko Pollo queso cebollín; Palta Pollo queso pimentón; Tempura Kanikama queso palta; Sésamo Palmito queso palta; Queso Pollo palta cebollín; Hosomaki Queso arroz.',
+        variants: [
+          { label: "Promo Super Bomber's 70 pzas", price: 23990 },
+        ],
+      },
+      {
+        id: 'sushi-burger',
+        brand: 'sushi',
+        brandName: "Bomber's Sushi",
+        subcategory: 'Sushi Burger y Ceviches',
+        icon: '🍙',
+        badge: 'Sushi Burger',
+        title: 'Sushi Burger (Vegetariano o Tradicional)',
+        description: 'Crujiente por fuera, rellena de palta, queso crema y tus ingredientes favoritos en formato 1 o 2 unidades.',
+        variants: [
+          { label: 'Vegetariano — 1 x $5.500', price: 5500 },
+          { label: 'Vegetariano — 2 x $9.990', price: 9990 },
+          { label: 'Tradicional — 1 x $8.990', price: 8990 },
+          { label: 'Tradicional — 2 x $15.990', price: 15990 },
+        ],
+      },
+      {
+        id: 'sushi-ceviches',
+        brand: 'sushi',
+        brandName: "Bomber's Sushi",
+        subcategory: 'Sushi Burger y Ceviches',
+        icon: '🍋',
+        badge: 'Ceviches',
+        title: 'Variedad de Ceviches',
+        description: 'Ceviche Tradicional (Pescado, cebolla morada, tomate, cilantro, limón) o Ceviche Mixto (Pescado, camarón, pulpo, cebolla morada, tomate, cilantro, limón).',
+        variants: [
+          { label: 'Ceviche Tradicional (Pescado, cebolla morada, tomate, cilantro, limón)', price: 8990 },
+          { label: 'Ceviche Mixto (Pescado, camarón, pulpo, cebolla morada, tomate, cilantro, limón)', price: 9990 },
+        ],
+      },
+      {
+        id: 'sushi-gohan',
+        brand: 'sushi',
+        brandName: "Bomber's Sushi",
+        subcategory: 'Gohan, Handrolls y Salsas',
+        icon: '🥗',
+        badge: 'Gohan Bowls',
+        title: 'Gohan',
+        description: 'Base de arroz con sésamo, queso crema y palta con proteína o vegetales a elección.',
+        variants: [
+          { label: 'Gohan Pollo (Pollo, morrón, palta, cebollín, queso con sésamo y cama de arroz)', price: 7000 },
+          { label: 'Gohan Camarón (Camarón, palta, cebollín, queso con sésamo y cama de arroz)', price: 7500 },
+          { label: 'Gohan del Mar (Salmón, palta, atún, camarón, queso con sésamo y cama de arroz)', price: 8000 },
+          { label: 'Gohan Vegetariano (Palta, pimentón, cebollín, queso y cama de arroz)', price: 6500 },
+        ],
+      },
+      {
+        id: 'sushi-handrolls',
+        brand: 'sushi',
+        brandName: "Bomber's Sushi",
+        subcategory: 'Gohan, Handrolls y Salsas',
+        icon: '🌯',
+        badge: 'Handrolls Fritos',
+        title: 'Handrolls',
+        description: 'Frito, cerrado y empanizado, relleno de arroz, proteína, vegetales y queso crema.',
+        variants: [
+          { label: 'Solo palta', price: 3500 },
+          { label: '2 Handroll (Morrón, cebollín o champiñón)', price: 5000 },
+          { label: '3 Handroll de palta', price: 10000 },
+          { label: '4 Handroll (Morrón, cebollín o champiñón)', price: 10000 },
+        ],
+      },
+      {
+        id: 'sushi-salsas',
+        brand: 'sushi',
+        brandName: "Bomber's Sushi",
+        subcategory: 'Gohan, Handrolls y Salsas',
+        icon: '🥣',
+        badge: '$1.000 c/u',
+        title: 'Salsas ($1.000 c/u)',
+        description: 'Acevichada, Maracuyá, Fuji (Leche evaporada) o Spice (Sriracha ají, merkén, mayonesa).',
+        variants: [
+          { label: 'Salsa Acevichada', price: 1000 },
+          { label: 'Salsa Maracuyá', price: 1000 },
+          { label: 'Salsa Fuji (Leche evaporada)', price: 1000 },
+          { label: 'Salsa Spice (Sriracha ají, merkén, mayonesa)', price: 1000 },
+        ],
+      },
+
+      // -----------------------------------------------------------------------
+      // LÍNEA 3: CHURROS Y ALGO MÁS ("Dulces Momentos, Grandes Historias")
+      // -----------------------------------------------------------------------
+      {
+        id: 'churros-espanol',
+        brand: 'churros',
+        brandName: 'Churros y Algo Más',
+        subcategory: 'Churros',
+        icon: '🧇',
+        badge: 'Churros',
+        title: 'Churro Español',
+        description: 'Churros españoles dorados y crujientes con salsas disponibles a elección: Chocolate o Manjar de por seda.',
+        variants: [
+          { label: '1 Unid + 1 Salsa (Chocolate o Manjar de por seda)', price: null },
+          { label: '4 Unid + 1 Salsa (Chocolate o Manjar de por seda)', price: null },
+          { label: '6 Unid + 2 Salsas (Chocolate o Manjar de por seda)', price: null },
+          { label: '9 Unid + 2 Salsas (Chocolate o Manjar de por seda)', price: null },
+          { label: '12 Unid + 3 Salsas (Chocolate o Manjar de por seda)', price: null },
+          { label: '24 Unid + 4 Salsas (Chocolate o Manjar de por seda)', price: null },
+        ],
+      },
+      {
+        id: 'churros-mini-fiesta',
+        brand: 'churros',
+        brandName: 'Churros y Algo Más',
+        subcategory: 'Churros',
+        icon: '🧇',
+        badge: 'Mini & Mix Fiesta',
+        title: 'Churro Mini Español y Mini Mix Fiesta',
+        description: 'Formato mini ideal para compartir con salsas disponibles: Chocolate o Manjar de por seda.',
+        variants: [
+          { label: 'Churro Mini Español — 10 Unid + 1 Salsa', price: null },
+          { label: 'Churro Mini Español — 20 Unid + 2 Salsas', price: null },
+          { label: 'Churro Mini Español — 30 Unid + 3 Salsas', price: null },
+          { label: 'Churro Mini Mix Fiesta (25 Mini Español + 25 Mini Rellenos + 4 Salsas)', price: null },
+        ],
+      },
+      {
+        id: 'churros-relleno',
+        brand: 'churros',
+        brandName: 'Churros y Algo Más',
+        subcategory: 'Churros',
+        icon: '🍫',
+        badge: 'Con Topping',
+        title: 'Churro Relleno',
+        description: 'Churros rellenos acompañados con topping dulce a elección.',
+        variants: [
+          { label: '1 Unid + Topping', price: null },
+          { label: '3 Unid + Topping', price: null },
+          { label: '6 Unid + Topping', price: null },
+        ],
+      },
+      {
+        id: 'churros-waffles',
+        brand: 'churros',
+        brandName: 'Churros y Algo Más',
+        subcategory: 'Waffles',
+        icon: '🧇',
+        badge: 'Waffles',
+        title: 'Waffles Artesanales',
+        description: 'Waffle Choco-Berries, Waffle Oreo o Waffle Banana Frut recién preparados.',
+        variants: [
+          { label: 'Waffle Choco-Berries (Frutos Rojos + Salsa de Chocolate + Crema + Topping)', price: null },
+          { label: 'Waffle Oreo (Helado + Galletas Oreos + Crema + Topping + Salsa de Chocolate)', price: null },
+          { label: 'Waffle Banana Frut (Banana + Frutilla + Salsa + Topping)', price: null },
+        ],
+      },
+      {
+        id: 'churros-helados',
+        brand: 'churros',
+        brandName: 'Churros y Algo Más',
+        subcategory: 'Helados y Postres',
+        icon: '🍨',
+        badge: 'Helados & Postres',
+        title: 'Helados y Postres',
+        description: 'Frozen Churro (4 Churros Españoles + 2 Bolas de Helado + Salsa + Topping), Copa de Helado, Banana Split y Helados Artesanales.',
+        variants: [
+          { label: 'Frozen Churro (4 Churros Españoles + 2 Bolas de Helado + Salsa + Topping)', price: null },
+          { label: 'Helados Artesanales — Simple', price: null },
+          { label: 'Helados Artesanales — Doble', price: null },
+          { label: 'Copa de Helado (Fruta + Helado + Crema)', price: null },
+          { label: 'Banana Split (Plátano + Helado + Crema + Salsa)', price: null },
+        ],
+      },
+      {
+        id: 'churros-bebidas-cafe',
+        brand: 'churros',
+        brandName: 'Churros y Algo Más',
+        subcategory: 'Bebidas y Cafetería',
+        icon: '☕',
+        badge: 'Bebidas & Cafetería',
+        title: 'Bebidas y Cafetería',
+        description: 'Jugo Natural (Frutos de Estación), Smoothie (Frutos de Estación), Café Helado y Café de Grano Nescafé.',
+        variants: [
+          { label: 'Jugo Natural (Frutos de Estación)', price: null },
+          { label: 'Smoothie (Frutos de Estación)', price: null },
+          { label: 'Café Helado (Café + Helado + Crema)', price: null },
+          { label: 'Café de Grano Nescafé (Variedad de cafés en grano molidos al momento)', price: null },
+        ],
+      },
+    ];
+
+    // =========================================================================
+    // 2. ESTADO DE LA APLICACIÓN
+    // =========================================================================
+    let activeBrand = 'todos';
+    let activeSubcategory = 'todas';
+    let searchQuery = '';
+    let deliveryMode = 'Delivery a domicilio';
+    const cart = []; // { id, title, brandName, variantLabel, price, qty }
+
+    // =========================================================================
+    // 3. UTILIDADES DE FORMATO Y NOTIFICACIONES
+    // =========================================================================
+    function formatCLP(amount) {
+      if (amount === null || amount === undefined) return 'Consultar';
+      return '$' + Number(amount).toLocaleString('es-CL');
+    }
+
+    let toastTimeout;
+    function showToast(title, message) {
+      const toast = document.getElementById('toast-notification');
+      document.getElementById('toast-title').textContent = title;
+      document.getElementById('toast-message').textContent = message;
+
+      toast.classList.remove('-translate-y-8', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('-translate-y-8', 'opacity-0');
+      }, 2800);
+    }
+
+    function copyText(text, successMsg) {
+      try {
+        const tempInput = document.createElement('textarea');
+        tempInput.value = text;
+        tempInput.style.position = 'fixed';
+        tempInput.style.opacity = '0';
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+        showToast('¡Copiado!', successMsg);
+      } catch (e) {
+        showToast('Aviso', 'No se pudo copiar automáticamente.');
+      }
+    }
+
+    // =========================================================================
+    // 4. CONTROL DEL BOTÓN FLOTANTE DE BÚSQUEDA Y FILTROS
+    // =========================================================================
+    function scrollToSearchBar() {
+      const panel = document.getElementById('search-filter-panel');
+      const input = document.getElementById('menu-search-input');
+      if (panel) {
+        panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      if (input) {
+        setTimeout(() => input.focus({ preventScroll: true }), 400);
+      }
+    }
+
+    function updateFloatingSearchVisibility() {
+      const btn = document.getElementById('floating-search-btn');
+      const panel = document.getElementById('search-filter-panel');
+      const ubicacion = document.getElementById('ubicacion');
+      if (!btn || !panel) return;
+
+      const panelBottom = panel.getBoundingClientRect().bottom;
+      const ubicacionTop = ubicacion ? ubicacion.getBoundingClientRect().top : Infinity;
+
+      if (panelBottom < 60 && ubicacionTop > window.innerHeight * 0.35) {
+        btn.classList.remove('hidden');
+        btn.classList.add('inline-flex');
+      } else {
+        btn.classList.add('hidden');
+        btn.classList.remove('inline-flex');
+      }
+    }
+
+    window.addEventListener('scroll', updateFloatingSearchVisibility, { passive: true });
+
+    function setBrandFilter(brand) {
+      activeBrand = brand;
+      activeSubcategory = 'todas';
+
+      document.querySelectorAll('.brand-tab').forEach((btn) => {
+        const isTarget = btn.getAttribute('data-brand') === brand;
+        if (isTarget) {
+          btn.className = 'brand-tab px-3.5 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-display font-bold transition-all bg-tizaAmarilla text-pizarraOscura shadow';
+        } else {
+          btn.className = 'brand-tab px-3.5 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-pizarraOscura text-tizaCrema hover:text-tizaAmarilla border border-maderaMarco';
+        }
+      });
+
+      renderSubcategoryPills();
+      renderCatalog();
+    }
+
+    function setSubcategoryFilter(subcat) {
+      activeSubcategory = subcat;
+      renderSubcategoryPills();
+      renderCatalog();
+    }
+
+    function handleSearch(val) {
+      searchQuery = val.trim().toLowerCase();
+      const clearBtn = document.getElementById('clear-search-btn');
+      if (searchQuery.length > 0) {
+        clearBtn.classList.remove('hidden');
+      } else {
+        clearBtn.classList.add('hidden');
+      }
+      renderCatalog();
+    }
+
+    function clearSearch() {
+      const input = document.getElementById('menu-search-input');
+      input.value = '';
+      handleSearch('');
+    }
+
+    function resetAllFilters() {
+      clearSearch();
+      setBrandFilter('todos');
+    }
+
+    function renderSubcategoryPills() {
+      const container = document.getElementById('subcategory-pills');
+      const relevantItems = activeBrand === 'todos'
+        ? CATALOG_DATA
+        : CATALOG_DATA.filter((item) => item.brand === activeBrand);
+
+      const subcategories = ['todas', ...new Set(relevantItems.map((i) => i.subcategory))];
+
+      container.innerHTML = subcategories
+        .map((sub) => {
+          const isActive = activeSubcategory === sub;
+          const label = sub === 'todas' ? 'Todas las subcategorías' : sub;
+          const classes = isActive
+            ? 'bg-bomberoRojo text-white font-extrabold border-bomberoRojo'
+            : 'bg-pizarraOscura text-tizaCrema/80 hover:text-tizaAmarilla border-maderaMarco font-bold';
+          return `
+            <button
+              type="button"
+              onclick="setSubcategoryFilter('${sub.replace(/'/g, "\\'")}')"
+              class="px-3.5 py-1.5 rounded-full border whitespace-nowrap transition-colors ${classes}">
+              ${label}
+            </button>
+          `;
+        })
+        .join('');
+    }
+
+    // =========================================================================
+    // 5. RENDERIZADO DEL CATÁLOGO ESTILO PIZARRA ARTESANAL
+    // =========================================================================
+    function renderCatalog() {
+      const container = document.getElementById('catalog-container');
+      const emptyState = document.getElementById('empty-search-state');
+      const counter = document.getElementById('results-counter');
+
+      const filtered = CATALOG_DATA.filter((item) => {
+        const matchesBrand = activeBrand === 'todos' || item.brand === activeBrand;
+        const matchesSubcat = activeSubcategory === 'todas' || item.subcategory === activeSubcategory;
+        if (!matchesBrand || !matchesSubcat) return false;
+
+        if (!searchQuery) return true;
+        const haystack = [
+          item.title,
+          item.brandName,
+          item.subcategory,
+          item.description,
+          ...item.variants.map((v) => v.label),
+        ]
+          .join(' ')
+          .toLowerCase();
+        return haystack.includes(searchQuery);
+      });
+
+      counter.textContent = `Mostrando ${filtered.length} ${filtered.length === 1 ? 'producto' : 'productos'}`;
+
+      if (filtered.length === 0) {
+        container.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+
+      const brandSections = [
+        {
+          key: 'pica',
+          title: "La Picá del Bomber's & Menú del Día",
+          subtitle: 'Menú del día de pizarra, colaciones, pollo a las brasas, hamburguesas, sándwiches 01 al 10, completos, chorrillanas, papas fritas y burritos.',
+          badgeStyle: 'bg-amber-950/80 text-tizaAmarilla border-tizaAmarilla/40',
+          icon: '🔥',
+        },
+        {
+          key: 'sushi',
+          title: "Bomber's Sushi — Sabores que encienden",
+          subtitle: 'Promociones desde 10 hasta 70 piezas, Sushi Burger, Ceviches, Gohan, Handrolls fritos y Salsas especiales.',
+          badgeStyle: 'bg-rose-950/80 text-rose-300 border-bomberoRojo/50',
+          icon: '🍣',
+        },
+        {
+          key: 'churros',
+          title: 'Churros y Algo Más — Dulces Momentos, Grandes Historias',
+          subtitle: 'Churro Español, Mini Español, Relleno, Mini Mix Fiesta, Waffles, Helados y Postres, Bebidas y Cafetería.',
+          badgeStyle: 'bg-yellow-950/80 text-amber-300 border-amber-400/40',
+          icon: '🧇',
+        },
+      ];
+
+      const htmlSections = brandSections
+        .map((section) => {
+          const sectionItems = filtered.filter((item) => item.brand === section.key);
+          if (sectionItems.length === 0) return '';
+
+          const cardsHtml = sectionItems
+            .map((item) => {
+              const hasSingleVariant = item.variants.length === 1;
+              const firstVariant = item.variants[0];
+              const priceTag = firstVariant.price !== null
+                ? `<span class="font-display font-bold text-lg sm:text-xl text-tizaAmarilla">${formatCLP(firstVariant.price)}</span>`
+                : `<span class="text-[11px] font-extrabold text-tizaAmarilla bg-pizarraOscura border border-tizaAmarilla/40 px-2.5 py-1 rounded-lg">A consultar</span>`;
+
+              const selectorHtml = hasSingleVariant
+                ? `<div class="bg-pizarraOscura/85 border border-tizaCrema/15 rounded-xl px-3.5 py-2.5 text-xs font-semibold text-tizaCrema/90 flex items-center justify-between gap-2">
+                     <span>${firstVariant.label}</span>
+                     <input type="hidden" id="select-${item.id}" value="0" />
+                   </div>`
+                : `<div>
+                     <label for="select-${item.id}" class="block text-[11px] font-extrabold uppercase tracking-wider text-tizaAmarilla/90 mb-1.5">
+                       Selecciona opción / acompañamiento:
+                     </label>
+                     <select id="select-${item.id}" onchange="updateCardPricePreview('${item.id}')" class="w-full bg-pizarraOscura border-2 border-maderaMarco focus:border-tizaAmarilla text-tizaCrema text-xs sm:text-sm font-semibold rounded-xl px-3 py-2.5 focus:outline-none">
+                       ${item.variants
+                         .map(
+                           (v, idx) =>
+                             `<option value="${idx}">${v.label}${v.price !== null ? ' — ' + formatCLP(v.price) : ''}</option>`
+                         )
+                         .join('')}
+                     </select>
+                   </div>`;
+
+              return `
+                <article class="bg-pizarraTablero border-2 border-maderaMarco hover:border-tizaAmarilla/70 rounded-3xl p-5 sm:p-6 flex flex-col justify-between shadow-pizarra transition-all duration-200">
+                  <div>
+                    <div class="flex items-start justify-between gap-3 mb-3.5">
+                      <div class="flex items-center gap-3 min-w-0">
+                        <div class="w-12 h-12 rounded-2xl bg-pizarraOscura border border-maderaMarco flex items-center justify-center text-2xl shrink-0">
+                          ${item.icon}
+                        </div>
+                        <div class="min-w-0">
+                          <span class="inline-block text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-md border mb-1 ${section.badgeStyle}">
+                            ${item.badge}
+                          </span>
+                          <h4 class="font-display font-bold text-lg text-tizaCrema leading-snug">${item.title}</h4>
+                        </div>
+                      </div>
+                      <div id="price-preview-${item.id}" class="shrink-0 text-right">
+                        ${priceTag}
+                      </div>
+                    </div>
+
+                    <p class="text-tizaCrema/80 text-xs sm:text-sm leading-relaxed mb-4">
+                      ${item.description}
+                    </p>
+                  </div>
+
+                  <div class="space-y-3 pt-3 border-t border-dashed border-tizaCrema/20">
+                    ${selectorHtml}
+                    <button
+                      type="button"
+                      onclick="addItemToCart('${item.id}')"
+                      class="w-full inline-flex items-center justify-center gap-2 bg-bomberoRojo hover:bg-bomberoOscuro text-white font-display font-bold text-xs sm:text-sm py-3 px-4 rounded-xl shadow transition-all active:scale-98">
+                      <i class="fa-solid fa-plus"></i> Agregar a la comanda
+                    </button>
+                  </div>
+                </article>
+              `;
+            })
+            .join('');
+
+          return `
+            <div class="space-y-6">
+              <div class="bg-pizarraTablero wood-frame rounded-3xl p-5 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-3">
+                <div class="space-y-1">
+                  <div class="flex items-center gap-2.5">
+                    <span class="text-2xl">${section.icon}</span>
+                    <h3 class="font-display font-bold text-2xl sm:text-3xl text-tizaAmarilla">${section.title}</h3>
+                  </div>
+                  <p class="text-xs sm:text-sm text-tizaCrema/80">${section.subtitle}</p>
+                </div>
+                <span class="inline-flex items-center self-start md:self-center text-xs font-extrabold text-pizarraOscura bg-tizaAmarilla px-3.5 py-1.5 rounded-full shrink-0">
+                  ${sectionItems.length} ${sectionItems.length === 1 ? 'categoría' : 'categorías'}
+                </span>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                ${cardsHtml}
+              </div>
+            </div>
+          `;
+        })
+        .join('');
+
+      container.innerHTML = htmlSections;
+    }
+
+    function updateCardPricePreview(itemId) {
+      const item = CATALOG_DATA.find((i) => i.id === itemId);
+      const select = document.getElementById(`select-${itemId}`);
+      const preview = document.getElementById(`price-preview-${itemId}`);
+      if (!item || !select || !preview) return;
+
+      const variant = item.variants[Number(select.value)];
+      if (!variant) return;
+
+      preview.innerHTML = variant.price !== null
+        ? `<span class="font-display font-bold text-lg sm:text-xl text-tizaAmarilla">${formatCLP(variant.price)}</span>`
+        : `<span class="text-[11px] font-extrabold text-tizaAmarilla bg-pizarraOscura border border-tizaAmarilla/40 px-2.5 py-1 rounded-lg">A consultar</span>`;
+    }
+
+    // =========================================================================
+    // 6. CARRITO DE PEDIDOS Y ENVÍO POR WHATSAPP (+56452627956)
+    // =========================================================================
+    function setDeliveryMode(mode) {
+      deliveryMode = mode;
+      const isDelivery = mode === 'Delivery a domicilio';
+
+      const dDel = document.getElementById('drawer-mode-delivery');
+      const dPick = document.getElementById('drawer-mode-pickup');
+      const inputEl = document.getElementById('customer-info-input');
+
+      if (dDel && dPick) {
+        dDel.className = isDelivery
+          ? 'py-2.5 px-3 rounded-xl text-xs font-extrabold bg-emerald-600 text-white shadow flex items-center justify-center gap-1.5 transition-all'
+          : 'py-2.5 px-3 rounded-xl text-xs font-bold bg-pizarraTablero text-tizaCrema border border-maderaMarco hover:text-tizaAmarilla flex items-center justify-center gap-1.5 transition-all';
+        dPick.className = !isDelivery
+          ? 'py-2.5 px-3 rounded-xl text-xs font-extrabold bg-tizaAmarilla text-pizarraOscura shadow flex items-center justify-center gap-1.5 transition-all'
+          : 'py-2.5 px-3 rounded-xl text-xs font-bold bg-pizarraTablero text-tizaCrema border border-maderaMarco hover:text-tizaAmarilla flex items-center justify-center gap-1.5 transition-all';
+      }
+
+      if (inputEl) {
+        inputEl.placeholder = isDelivery
+          ? 'Tu dirección en Temuco o tu nombre (opcional)'
+          : 'Tu nombre para retiro en Av. Barros Arana 196 (opcional)';
+      }
+
+      showToast('Modalidad seleccionada', mode);
+    }
+
+    function addItemToCart(itemId) {
+      const item = CATALOG_DATA.find((i) => i.id === itemId);
+      if (!item) return;
+
+      const selectEl = document.getElementById(`select-${itemId}`);
+      const variantIdx = selectEl ? Number(selectEl.value) : 0;
+      const variant = item.variants[variantIdx] || item.variants[0];
+
+      const existing = cart.find(
+        (c) => c.id === item.id && c.variantLabel === variant.label
+      );
+
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({
+          id: item.id,
+          title: item.title,
+          brandName: item.brandName,
+          variantLabel: variant.label,
+          price: variant.price,
+          qty: 1,
+        });
+      }
+
+      renderCart();
+      showToast('¡Agregado a tu comanda!', `${item.title} (${variant.label})`);
+    }
+
+    function updateCartQty(index, delta) {
+      if (!cart[index]) return;
+      cart[index].qty += delta;
+      if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+      }
+      renderCart();
+    }
+
+    function clearCart() {
+      cart.length = 0;
+      renderCart();
+      showToast('Comanda vaciada', 'Se eliminaron todos los productos.');
+    }
+
+    function toggleCartDrawer(open) {
+      const drawer = document.getElementById('cart-drawer');
+      const backdrop = document.getElementById('cart-drawer-backdrop');
+      if (open) {
+        backdrop.classList.remove('hidden');
+        drawer.classList.remove('translate-x-full');
+      } else {
+        backdrop.classList.add('hidden');
+        drawer.classList.add('translate-x-full');
+      }
+    }
+
+    function renderCart() {
+      const container = document.getElementById('cart-items-container');
+      const floatingCount = document.getElementById('floating-cart-count');
+      const floatingTotal = document.getElementById('floating-cart-total');
+      const subtotalEl = document.getElementById('cart-subtotal-price');
+      const unpricedNote = document.getElementById('cart-unpriced-note');
+
+      const totalUnits = cart.reduce((acc, item) => acc + item.qty, 0);
+      const subtotal = cart.reduce(
+        (acc, item) => acc + (item.price !== null ? item.price * item.qty : 0),
+        0
+      );
+      const hasUnpriced = cart.some((item) => item.price === null);
+
+      floatingCount.textContent = totalUnits;
+      floatingTotal.textContent = formatCLP(subtotal);
+      subtotalEl.textContent = formatCLP(subtotal);
+
+      if (hasUnpriced && cart.length > 0) {
+        unpricedNote.classList.remove('hidden');
+      } else {
+        unpricedNote.classList.add('hidden');
+      }
+
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-12 space-y-3">
+            <div class="w-14 h-14 rounded-2xl bg-pizarraOscura border border-maderaMarco text-tizaAmarilla/60 flex items-center justify-center text-2xl mx-auto">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </div>
+            <p class="font-display font-bold text-lg text-tizaCrema">Tu comanda está vacía</p>
+            <p class="text-xs text-tizaCrema/70 max-w-xs mx-auto">
+              Agrega platos de La Picá, Bomber's Sushi o Churros y Algo Más para enviarlo por WhatsApp.
+            </p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = cart
+        .map(
+          (item, idx) => `
+          <div class="bg-pizarraOscura/90 border border-maderaMarco rounded-2xl p-3.5 flex items-start justify-between gap-3">
+            <div class="space-y-1 flex-1">
+              <span class="text-[10px] font-extrabold uppercase tracking-wider text-tizaAmarilla">${item.brandName}</span>
+              <p class="font-bold text-sm text-tizaCrema leading-snug">${item.title}</p>
+              <p class="text-xs text-tizaCrema/75">${item.variantLabel}</p>
+              <p class="text-xs font-extrabold text-tizaAmarilla pt-0.5">
+                ${item.price !== null ? formatCLP(item.price * item.qty) : 'Valor a consultar'}
+              </p>
+            </div>
+            <div class="flex items-center gap-1.5 bg-pizarraTablero border border-maderaMarco rounded-xl p-1 shrink-0">
+              <button onclick="updateCartQty(${idx}, -1)" aria-label="Disminuir cantidad" class="w-7 h-7 rounded-lg hover:bg-pizarraOscura text-tizaCrema flex items-center justify-center text-xs font-bold">
+                <i class="fa-solid fa-minus"></i>
+              </button>
+              <span class="w-6 text-center text-xs font-extrabold text-tizaCrema">${item.qty}</span>
+              <button onclick="updateCartQty(${idx}, 1)" aria-label="Aumentar cantidad" class="w-7 h-7 rounded-lg hover:bg-pizarraOscura text-tizaAmarilla flex items-center justify-center text-xs font-bold">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        `
+        )
+        .join('');
+    }
+
+    function buildWhatsAppOrderText() {
+      const infoInput = document.getElementById('customer-info-input');
+      const customerInfo = infoInput ? infoInput.value.trim() : '';
+
+      if (cart.length === 0) {
+        return `¡Hola La Picá del Bomber's! Quisiera hacer una consulta / pedido (${deliveryMode}).`;
+      }
+
+      const lines = cart.map((item, i) => {
+        const pricePart = item.price !== null
+          ? ` — ${formatCLP(item.price * item.qty)}`
+          : ' — (Consultar valor)';
+        return `${i + 1}. *${item.qty}x ${item.title}* (${item.variantLabel})${pricePart}`;
+      });
+
+      const subtotal = cart.reduce(
+        (acc, item) => acc + (item.price !== null ? item.price * item.qty : 0),
+        0
+      );
+      const hasUnpriced = cart.some((item) => item.price === null);
+
+      let msg = `¡Hola *La Picá del Bomber's*! Quiero realizar el siguiente pedido:\n\n`;
+      msg += `🛵 *Modalidad:* ${deliveryMode}\n`;
+      if (customerInfo) {
+        msg += `📍 *Dirección / Nombre:* ${customerInfo}\n`;
+      }
+      msg += `\n*Detalle de la comanda:*\n${lines.join('\n')}\n\n`;
+      msg += `💰 *Total estimado (ítems con precio):* ${formatCLP(subtotal)}`;
+      if (hasUnpriced) {
+        msg += `\n_(Incluye productos cuyo valor se confirma al responder)_`;
+      }
+      return msg;
+    }
+
+    function sendOrderToWhatsApp() {
+      const message = buildWhatsAppOrderText();
+      const url = `https://wa.me/56452627956?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+
+    function copyCartMessage() {
+      const message = buildWhatsAppOrderText().replace(/\*/g, '');
+      copyText(message, 'Detalle de la comanda copiado al portapapeles');
+    }
+
+    // =========================================================================
+    // 7. INICIALIZACIÓN
+    // =========================================================================
+    const currentYearEl = document.getElementById('current-year');
+    if (currentYearEl) {
+      currentYearEl.textContent = new Date().getFullYear();
+    }
+
+    renderSubcategoryPills();
+    renderCatalog();
+    renderCart();
+  </script>
+</body>
+</html>
